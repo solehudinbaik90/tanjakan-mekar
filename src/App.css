@@ -1,0 +1,9 @@
+@import "./assets/css/style.css";
+@import "./assets/css/responsive.css";
+@import "./assets/css/main.css";
+@import "./assets/css/colors.css";
+@import "./assets/css/dge.css";
+
+.pointer { cursor: pointer; }
+.modal-dialog { overflow-y: initial !important; }
+.modal-body { max-height: 450px; overflow-y: auto; }
