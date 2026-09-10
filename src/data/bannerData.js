@@ -5,7 +5,7 @@ export const homeSliderBanner = [
 ];
 
 export const topAdsBanner = [
-  { image: "/img/banner/4.jpg", to: "/", title: "Dapatkan Full Source Code - Hanya di datagoe.com" },
+  { image: "/img/banner/4.jpg", to: "/", title: "Dapatkan Full Source Code - Hanya di tanjakan mekar" },
   { image: "/img/banner/5.jpg", to: "/", title: "Stop Gratifikasi" },
 ];
 
