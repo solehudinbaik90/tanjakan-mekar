@@ -6742,8 +6742,8 @@ Header Magazine style
 
 .jl_header_magazine_style.two_header_top_style.jl_cus_top_share .header_top_bar_wrapper .map_wrapper{
     position: relative;
-    background: url(/assets/img/map.png) 100% 60% no-repeat;
-    background-image: url(/assets/img/map.png);
+    background: url(./img/map.png) 100% 60% no-repeat;
+    background-image: url(./img/map.png);
     background-position-x: 8%;
     background-position-y: 50%;
     background-size: 12%,100%;
@@ -14964,7 +14964,7 @@ footer ul li a, footer ul li{
 }
 
 span.user_review-criteria-star-under {
-    background: url(img/star-rating.png) no-repeat;
+    background: url(./img/star-rating.png) no-repeat;
     background-position: 0px -20px;
     height: 18px;
     width: 100px;
@@ -14974,7 +14974,7 @@ span.user_review-criteria-star-under {
 }
 
 span.user_review-criteria-star-top {
-    background:url(img/star-rating.png) no-repeat;
+    background:url(./img/star-rating.png) no-repeat;
     height:18px;
     position:absolute;
     top:0px;
@@ -15033,13 +15033,13 @@ span.user_review-criteria-star-top {
     background-position: left top;
     float: left;
     height: 12px;
-    background: url('img/stars.png') no-repeat;
+    background: url('./img/stars.png') no-repeat;
     background-size: 63px 24px;
 }
 .review_star_wrapper .review_star_background .review_star_value{
     display: inline-block;
     height: 12px;
-    background: url('img/stars.png') no-repeat;
+    background: url('./img/stars.png') no-repeat;
     background-size: 63px 24px;
     position: absolute;
     left: 0;
