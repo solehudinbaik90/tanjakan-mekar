@@ -16,7 +16,7 @@ export default function SearchOverlay({ open, onClose }) {
   return (
     <div className="search_form_menu_personal" style={{ display: "block" }}>
       <div className="menu_mobile_large_close" onClick={onClose}>
-        <span className="jl_close_wapper">
+        <span className="jl_close_wapper search_form_menu_personal_click">
           <span className="jl_close_1" /><span className="jl_close_2" />
         </span>
       </div>
