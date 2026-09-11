@@ -31,17 +31,21 @@ export default function Sidebar({ showTerpopuler = false }) {
           </div>
           {terpopuler.map((t, i) => (
             <div className="card p-0 shadow-sm mb-2" key={t.slug}>
-              <div className="card-body p-1 row align-items-center">
-                <div className="col-2">
-                  <h3 className="text-primary pl-3">{i + 1}</h3>
-                </div>
-                <div className="col-10">
-                  <h3 className="title-card">
-                    <Link to={`/${t.slug}`}>{t.judul}</Link>
-                  </h3>
-                  <span className="jl_post_meta">
-                    <span className="text-primary">{t.kategori}</span> | {t.tanggal}
-                  </span>
+              <div className="card-body p-1">
+                <div className="row align-items-center justify-content-center">
+                  <div className="col-2 pr-0">
+                    <h3 className="text-primary pl-3">{i + 1}</h3>
+                  </div>
+                  <div className="col-10 pl-0">
+                    <h3 className="title-card">
+                      <Link to={`/${t.slug}`}>{t.judul}</Link>
+                    </h3>
+                    <span className="jl_post_meta">
+                      <span className="text-primary">{t.kategori}</span>
+                      <span> | </span>
+                      <span className="post-date" style={{ color: "#647277" }}>{t.tanggal}</span>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -55,12 +59,16 @@ export default function Sidebar({ showTerpopuler = false }) {
       <SliderWrapper dots slidesToShow={1}>
         {infografisList.map((info) => (
           <div className="item-slide" key={info.id}>
-            <div className="jl_grid_overlay jl_w_menu jl_clear_at">
-              <div className="jl_grid_verlay_wrap jl_radus_e">
-                <a href={info.image} download>
-                  <div className="jl_f_img_bg" style={{ backgroundImage: `url(${info.image})` }} />
-                  <span className="jl_post_type_icon"><i className="jli-gallery" /></span>
-                </a>
+            <div className="slide-inner">
+              <div className="jl_grid_overlay jl_w_menu jl_clear_at">
+                <div className="jl_grid_overlay_col">
+                  <div className="jl_grid_verlay_wrap jl_radus_e">
+                    <a href={info.image} download>
+                      <div className="jl_f_img_bg" style={{ backgroundImage: `url(${info.image})` }} />
+                      <span className="jl_post_type_icon"><i className="jli-gallery" /></span>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
