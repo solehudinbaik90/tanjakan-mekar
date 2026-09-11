@@ -17,9 +17,6 @@ export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(getInitialTheme);
 
   useEffect(() => {
-    const isDark = theme === "dark";
-    document.documentElement.classList.toggle("dark-mode", isDark);
-    document.body.classList.toggle("dark-mode", isDark);
     window.localStorage.setItem(STORAGE_KEY, theme);
   }, [theme]);
 
