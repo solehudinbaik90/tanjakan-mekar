@@ -5,7 +5,7 @@ export default function AgendaCard({ agenda, onView }) {
         <div className="row align-items-center">
           <div className="col-3 pl-3">
             <img
-              src="[plus3.datagoe.com](https://plus3.datagoe.com/public/img/informasi/agenda/agenda128.png)"
+              src="/img/informasi/agenda/agenda128.png"
               alt="agenda"
               className="rounded"
               style={{ width: 75, height: "auto" }}
