@@ -4,7 +4,7 @@ import { siteConfig } from "../data/siteConfig.js";
 
 export default function MobileMenu({ open, onClose }) {
   return (
-    <div id="content_nav" className={`jl_mobile_nav_wrapper ${open ? "show" : ""}`}>
+    <div id="content_nav" className={`jl_mobile_nav_wrapper ${open ? "jl_mobile_nav_open" : ""}`}>
       <div id="nav" className="jl_mobile_nav_inner">
         <div className="menu_mobile_icons mobile_close_icons" onClick={onClose}>
           <span className="jl_close_wapper">
