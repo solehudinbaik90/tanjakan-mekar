@@ -5,14 +5,6 @@
 @import "./assets/css/dge.css";
 @import "./assets/css/components.css";
 
-@font-face {
-  font-family: 'JlIconFont';
-  src: url('/font/jl_font.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
-
 .pointer { 
   cursor: pointer;
 }
@@ -25,3 +17,140 @@
   max-height: 450px;
   overflow-y: auto;
 }
+
+@font-face {
+  font-family: jl_font;
+  src: url('/font/jl_font.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+
+[class*=" jli-"], [class^=jli-] {
+  font-family: jl_font !important;
+  speak: never;
+  font-style: normal;
+  font-weight: 700;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.jli-pen:before{content:"\e973"}
+.jli-comments:before{content:"\e913"}
+.jli-date:before{content:"\e969"}
+.jli-lightning:before{content:"\e972"}
+.jli-watch-2:before{content:"\e974"}
+.jli-link:before{content:"\e971"}
+.jli-loading-1:before{content:"\e966"}
+.jli-quote-2:before{content:"\e96e"}
+.jli-video-3:before{content:"\e96f"}
+.jli-close-1:before{content:"\e970"}
+.jli-quote:before{content:"\e90e"}
+.jli-check-o:before{content:"\e96b"}
+.jli-close-o:before{content:"\e96c"}
+.jli-lock:before{content:"\e96d"}
+.jli-check:before{content:"\e96a"}
+.jli-activity-o:before{content:"\e901"}
+.jli-activity:before{content:"\e903"}
+.jli-plus:before{content:"\e906"}
+.jli-wechat:before{content:"\e907"}
+.jli-down-chevron:before{content:"\e95f"}
+.jli-up-chevron:before{content:"\e960"}
+.jli-left-chevron:before{content:"\e961"}
+.jli-right-chevron:before{content:"\e962"}
+.jli-setting:before{content:"\e963"}
+.jli-loading:before{content:"\e964"}
+.jli-mail:before{content:"\e965"}
+.jli-gallery:before{content:"\e967"}
+.jli-close:before{content:"\e968"}
+.jli-share:before{content:"\e95e"}
+.jli-play:before{content:"\e900"}
+.jli-bell:before{content:"\e902"}
+.jli-spotify:before{content:"\e904"}
+.jli-view-o:before{content:"\e905"}
+.jli-comment:before{content:"\e908"}
+.jli-fire-o:before{content:"\e909"}
+.jli-fire:before{content:"\e90a"}
+.jli-lightning1:before{content:"\e90b"}
+.jli-love-full:before{content:"\e90c"}
+.jli-pause:before{content:"\e90d"}
+.jli-star-full:before{content:"\e90f"}
+.jli-star:before{content:"\e910"}
+.jli-camera:before{content:"\e911"}
+.jli-comment-o:before{content:"\e912"}
+.jli-love:before{content:"\e914"}
+.jli-musical-note:before{content:"\e915"}
+.jli-shuffle:before{content:"\e916"}
+.jli-time:before{content:"\e917"}
+.jli-user-p:before{content:"\e918"}
+.jli-user:before{content:"\e919"}
+.jli-video:before{content:"\e91a"}
+.jli-view:before{content:"\e91b"}
+.jli-bag:before{content:"\e91c"}
+.jli-cart:before{content:"\e91d"}
+.jli-moon:before{content:"\e91e"}
+.jli-search:before{content:"\e91f"}
+.jli-sun:before{content:"\e920"}
+.jli-right-arrow:before{content:"\e921"}
+.jli-exchange-2:before{content:"\e922"}
+.jli-crossroads:before{content:"\e923"}
+.jli-compress:before{content:"\e924"}
+.jli-left-arrow:before{content:"\e925"}
+.jli-up-chevron-1:before{content:"\e926"}
+.jli-right-chevron-2:before{content:"\e927"}
+.jli-right-chevron-1:before{content:"\e928"}
+.jli-left-chevron-2:before{content:"\e929"}
+.jli-down-chevron-1:before{content:"\e92a"}
+.jli-left-chevron-1:before{content:"\e92b"}
+.jli-zerply:before{content:"\e92c"}
+.jli-youtube:before{content:"\e92d"}
+.jli-yandex:before{content:"\e92e"}
+.jli-yahoo:before{content:"\e92f"}
+.jli-xing:before{content:"\e930"}
+.jli-wordpress:before{content:"\e931"}
+.jli-wikipedia:before{content:"\e932"}
+.jli-vk:before{content:"\e933"}
+.jli-vimeo:before{content:"\e934"}
+.jli-viber:before{content:"\e935"}
+.jli-twitter:before{content:"\e936"}
+.jli-tumblr:before{content:"\e937"}
+.jli-telegram:before{content:"\e938"}
+.jli-technorati:before{content:"\e939"}
+.jli-stumbleupon:before{content:"\e93a"}
+.jli-soundcloud:before{content:"\e93b"}
+.jli-skype:before{content:"\e93c"}
+.jli-kickstarter:before{content:"\e93d"}
+.jli-lastfm:before{content:"\e93e"}
+.jli-linkedin:before{content:"\e93f"}
+.jli-livejournal:before{content:"\e940"}
+.jli-myspace:before{content:"\e941"}
+.jli-opera:before{content:"\e942"}
+.jli-paypal:before{content:"\e943"}
+.jli-picasa:before{content:"\e944"}
+.jli-pinterest:before{content:"\e945"}
+.jli-rss:before{content:"\e946"}
+.jli-sharethis:before{content:"\e947"}
+.jli-ebay:before{content:"\e948"}
+.jli-evernote:before {content:"\e949"}
+.jli-facebook:before{content:"\e94a"}
+.jli-flickr:before{content:"\e94b"}
+.jli-forrst:before{content:"\e94c"}
+.jli-foursquare-1:before{content:"\e94d"}
+.jli-foursquare:before{content:"\e94e"}
+.jli-google-plus:before{content:"\e94f"}
+.jli-grooveshark:before{content:"\e950"}
+.jli-html5:before{content:"\e951"}
+.jli-instagram:before{content:"\e952"}
+.jli-addthis:before{content:"\e953"}
+.jli-amazon:before{content:"\e954"}
+.jli-bebo:before{content:"\e955"}
+.jli-behance:before{content:"\e956"}
+.jli-bing:before{content:"\e957"}
+.jli-blogger:before{content:"\e958"}
+.jli-delicious:before{content:"\e959"}
+.jli-deviantart:before{content:"\e95a"}
+.jli-digg:before{content:"\e95b"}
+.jli-dribble:before{content:"\e95c"}
+.jli-dropbox:before{content:"\e95d"}
