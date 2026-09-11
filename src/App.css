@@ -5,11 +5,11 @@
 @import "./assets/css/dge.css";
 
 @font-face {
-  font-family: 'JlFont';
+  font-family: 'JlIconFont';
   src: url('/font/jl_font.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 .pointer { 
