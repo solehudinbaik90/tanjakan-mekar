@@ -13,45 +13,61 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
 
   return (
-    <header className="header-wraper jl_header_magazine_style two_header_top_style header_layout_style3_custom jl_cus_top_share">
-      <div className="header_top_bar_wrapper">
-        <div className="container">
-          <div className="row">
-            <div className="logo_small_wrapper col-md-4 col-sm-12 d-flex align-items-center mt-3">
-              <Link className="logo-mod-a text-center" to="/">
-                <img className="jl_logo_n logo_mod" src={siteConfig.logo} alt="CMS Datagoe" />
-              </Link>
-              <div className="d-block d-sm-none search_header_menu jl_nav_mobile">
-                <div className="menu_mobile_icons" onClick={() => setMobileOpen(true)}>
-                  <div className="jlm_w">
-                    <span className="jlma" /><span className="jlmb" /><span className="jlmc" />
+    <>
+      <header className="header-wraper jl_header_magazine_style two_header_top_style header_layout_style3_custom jl_cus_top_share">
+        <div className="header_top_bar_wrapper">
+          <div className="container">
+            <div className="row">
+              <div className="logo_small_wrapper col-md-4 col-sm-12 col-xs-12 mt-3 d-flex align-items-center">
+                <Link className="logo-mod-a text-center" to="/">
+                  <img className="jl_logo_n logo_mod" src={siteConfig.logo} alt="CMS Datagoe" />
+                </Link>
+                <div className="d-block d-sm-none search_header_menu jl_nav_mobile">
+                  <div className="menu_mobile_icons" onClick={() => setMobileOpen(true)}>
+                    <div className="jlm_w">
+                      <span className="jlma" /><span className="jlmb" /><span className="jlmc" />
+                    </div>
                   </div>
+                  <div
+                    className="search_header_wrapper search_form_menu_personal_click"
+                    onClick={() => setSearchOpen(true)}
+                  >
+                    <i className="jli-search" />
+                  </div>
+                  <ThemeToggle />
                 </div>
-                <div className="search_header_wrapper" onClick={() => setSearchOpen(true)}>
-                  <i className="jli-search" />
-                </div>
-                <ThemeToggle />
               </div>
-            </div>
 
-            <div className="col-md-8 col-sm-12 mt-3 mb-3 text-center">
-              <SliderWrapper autoplaySpeed={7000}>
-                {topAdsBanner.map((b, i) => (
-                  <div className="item-slide jl_radus_e" key={i}>
-                    <a href={b.href} target="_blank" rel="noreferrer" title={b.title}>
-                      <img src={b.image} alt={b.title} className="img-fluid rounded" style={{ width: "100%" }} />
-                    </a>
-                  </div>
-                ))}
-              </SliderWrapper>
+              <div className="col-md-8 col-sm-12 col-xs-12 mt-3 mb-3 text-center">
+                <SliderWrapper autoplaySpeed={7000}>
+                  {topAdsBanner.map((b, i) => (
+                    <div className="item-slide jl_radus_e" key={i}>
+                      <div className="slide-inner">
+                        <a href={b.href} target="_blank" rel="noreferrer" title={b.title}>
+                          <img
+                            src={b.image}
+                            alt={b.title}
+                            title={b.title}
+                            className="img-fluid position-relative rounded"
+                            style={{ width: "100%", height: "auto" }}
+                          />
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </SliderWrapper>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <MainMenu onSearchClick={() => setSearchOpen(true)} />
+        <div className="jl_blank_nav" />
+
+        <MainMenu onSearchClick={() => setSearchOpen(true)} />
+      </header>
+
       <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
-    </header>
+    </>
   );
 }
