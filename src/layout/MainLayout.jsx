@@ -15,9 +15,9 @@ export default function MainLayout() {
     >
       <div className="options_layout_container full_layout_enable_front">
         <Header />
-        <main className="jl_home_bw">
+        <div className="jl_home_bw">
           <Outlet />
-        </main>
+        </div>
         <Footer />
         <BackToTop />
       </div>
