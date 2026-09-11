@@ -220,7 +220,7 @@ export default function Home() {
           <div className="card p-2 mt-3">
             <div className="card-body p-1">
               <h3 className="title-card">
-                “Mewujudkan Kabupaten Lembata sebagai{" "}
+                “Mewujudkan Kabupaten Tangerang sebagai{" "}
                 <i style={{ color: "#AC0C0C" }}>kota budaya</i> yang Modern, Tangguh, Gesit,
                 Kreatif dan Sejahtera”
               </h3>
