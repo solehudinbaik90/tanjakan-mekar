@@ -3,6 +3,7 @@
 @import "./assets/css/main.css";
 @import "./assets/css/colors.css";
 @import "./assets/css/dge.css";
+@import "./assets/css/components.css";
 
 .pointer { 
   cursor: pointer;
@@ -16,6 +17,217 @@
   max-height: 450px;
   overflow-y: auto;
 }
+
+    #myVideo {
+        object-fit: cover;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .slider__wrapper {
+        position: relative;
+        width: 100%;
+        height: 80vh;
+        /* Tinggi video lebih kecil dari full layar */
+        max-height: 700px;
+        /* Biar di layar besar tetap wajar */
+        overflow: hidden;
+    }
+
+    .slider__wrapper video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: 0;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        filter: brightness(0.6);
+        /* efek gelap supaya teks lebih kelihatan */
+    }
+
+    .slider__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 3, 32, 0.4);
+        z-index: 1;
+    }
+
+    .slider__content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 20px;
+        color: #ffffff;
+    }
+
+    .slider__content img {
+        max-width: 100px;
+        margin-bottom: 15px;
+    }
+
+    .slider__title {
+        font-size: 36px;
+        margin-bottom: 10px;
+        color: #ffffff;
+    }
+
+    .slider__content p {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #ffffff;
+    }
+
+    /* Responsive HP */
+    @media (max-width: 575px) {
+        .slider__wrapper {
+            height: 60vh;
+        }
+
+        .slider__content img {
+            max-width: 80px;
+        }
+
+        .slider__title {
+            font-size: 28px;
+        }
+
+        .slider__content p {
+            font-size: 14px;
+        }
+    }
+    
+        .pegawai-card {
+        border-radius: 1rem;
+        transition: all 0.3s ease-in-out;
+        background: linear-gradient(145deg, #ffffff, #f1f1f1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .pegawai-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .pegawai-nama {
+        font-size: 1rem;
+        margin-top: 0.5rem;
+        color: #333;
+        font-weight: 600;
+    }
+
+    .pegawai-jabatan {
+        font-size: 0.875rem;
+        color: #666;
+    }
+
+    .pegawai-avatar-wrapper {
+        width: 130px;
+        height: 160px;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 2px solid #007bff;
+        background-color: #fff;
+        margin: 0 auto;
+    }
+
+    .pegawai-avatar-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* ===================== */
+    /* RESPONSIVE BREAKPOINTS */
+    /* ===================== */
+
+    @media (max-width: 768px) {
+        .pegawai-avatar-wrapper {
+            width: 100px;
+            height: 120px;
+        }
+
+        .pegawai-nama {
+            font-size: 0.9rem;
+        }
+
+        .pegawai-jabatan {
+            font-size: 0.8rem;
+        }
+
+        .pegawai-card {
+            padding: 0.75rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .pegawai-avatar-wrapper {
+            width: 80px;
+            height: 100px;
+        }
+
+        .pegawai-nama {
+            font-size: 0.85rem;
+        }
+
+        .pegawai-jabatan {
+            font-size: 0.75rem;
+        }
+
+        .pegawai-card {
+            padding: 0.5rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .pegawai-card {
+            padding: 0.5rem;
+        }
+    }
+
+    .img-berita {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .judul-berita {
+        font-weight: 600;
+        color: #2c2c2c;
+    }
+
+    .kategori-tanggal {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .selengkapnya {
+        color: #ff9900;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .selengkapnya:hover {
+        text-decoration: underline;
+    }
 
 @font-face {
   font-family: jl_font;
