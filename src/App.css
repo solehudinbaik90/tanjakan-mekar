@@ -4,6 +4,23 @@
 @import "./assets/css/colors.css";
 @import "./assets/css/dge.css";
 
-.pointer { cursor: pointer; }
-.modal-dialog { overflow-y: initial !important; }
-.modal-body { max-height: 450px; overflow-y: auto; }
+@font-face {
+  font-family: 'JlFont';
+  src: url('/font/jl_font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.pointer { 
+  cursor: pointer;
+}
+
+.modal-dialog { 
+  overflow-y: initial !important;
+}
+
+.modal-body { 
+  max-height: 450px;
+  overflow-y: auto;
+}
