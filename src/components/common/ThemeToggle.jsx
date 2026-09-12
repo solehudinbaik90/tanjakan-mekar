@@ -12,7 +12,7 @@ export default function ThemeToggle({ className = "" }) {
 
   return (
     <div
-      className={`jl_day_night ${isDark ? "jl_day_dark" : "jl_day_en"} ${className}`}
+      className={`jl_day_night ${isDark ? "jl_night_en" : "jl_day_en"} ${className}`}
       onClick={toggleTheme}
       onKeyDown={handleKeyDown}
       role="button"
