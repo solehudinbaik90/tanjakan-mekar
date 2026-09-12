@@ -42,6 +42,45 @@ export const beritaSamping = [
   },
 ];
 
+export const artikelList = [
+  {
+    image: "/img/informasi/berita/51.png",
+    judul: "Resmikan Masjid Mekar, Wakil Bupati MBD Ajak Perkuat Sinergitas",
+    slug: "resmikan-mesjid-mekar-wakil-bupati-mbd-ajak-perkuat-sinergitas",
+    penulis: "Vian Taum",
+    kategori: "Artikel",
+    kategoriSlug: "artikel",
+    tanggal: "Minggu, 01 Maret 2026",
+  },
+  {
+    image: "/img/informasi/berita/52.webp",
+    judul: "Dibalik Nyala Obor Toleransi NKRI Yang Disulut Bupati Kanis Tuaq",
+    slug: "dibalik-nyala-obor-toleransi-nkri-yang-disulut-bupati-kanis-tuaq",
+    penulis: "Vian Taum",
+    kategori: "Artikel",
+    kategoriSlug: "artikel",
+    tanggal: "Sabtu, 21 Februari 2026",
+  },
+  {
+    image: "/img/informasi/berita/53.jpg",
+    judul: "Pemda Lembata Pastikan Distribusi BBM Aman Terkendali, Warga Diimbau Tenang",
+    slug: "pemda-lembata-pastikan-distribusi-bbm-aman-terkendali-warga-diimbau-tenang",
+    penulis: "Vian Taum",
+    kategori: "Artikel",
+    kategoriSlug: "artikel",
+    tanggal: "Sabtu, 21 Februari 2026",
+  },
+  {
+    image: "/img/informasi/berita/54.jpg",
+    judul: "Literasi Digital Bergulir ke Seluruh Negeri",
+    slug: "literasi-digital-bergulir-ke-seluruh-negeri",
+    penulis: "Vian Taum",
+    kategori: "Artikel",
+    kategoriSlug: "artikel",
+    tanggal: "Kamis, 08 Januari 2026",
+  },
+];
+
 // Daftar lengkap untuk halaman /berita (bisa diganti fetch API paginasi di masa depan)
 export const beritaList = [
   {
