@@ -18,6 +18,9 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     window.localStorage.setItem(STORAGE_KEY, theme);
+
+    document.body.classList.add("mobile_nav_class");
+    document.body.classList.toggle("wp-night-mode-on", theme === "dark");
   }, [theme]);
 
   const toggleTheme = useCallback(() => {
