@@ -1,8 +1,60 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { mainMenu } from "../data/menuData.js";
 import { siteConfig } from "../data/siteConfig.js";
 
+function MobileMenuItem({ item, onClose, openKeys, toggleKey, parentKey }) {
+  const itemKey = parentKey ? `${parentKey}>${item.label}` : item.label;
+  const hasChildren = Boolean(item.children?.length);
+  const isOpen = openKeys.has(itemKey);
+
+  return (
+    <li className={hasChildren ? "menu-item menu-item-has-children" : "menu-item current-menu-item current_page_item"}>
+      {item.to ? (
+        <Link to={item.to} onClick={onClose}>{item.label}</Link>
+      ) : (
+        <a href="#">{item.label}</a>
+      )}
+
+      {hasChildren && (
+        <span className="arrow_down" onClick={() => toggleKey(itemKey)}>
+          <i className={isOpen ? "jli-up-chevron" : "jli-down-chevron"} aria-hidden="true" />
+        </span>
+      )}
+
+      {hasChildren && (
+        <ul className={`sub-menu ${isOpen ? "menu-active-class" : ""}`}>
+          {item.children.map((child) => (
+            <MobileMenuItem
+              key={child.label}
+              item={child}
+              onClose={onClose}
+              openKeys={openKeys}
+              toggleKey={toggleKey}
+              parentKey={itemKey}
+            />
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+}
+
 export default function MobileMenu({ open, onClose }) {
+  const [openKeys, setOpenKeys] = useState(() => new Set());
+
+  const toggleKey = (key) => {
+    setOpenKeys((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
+      }
+      return next;
+    });
+  };
+
   return (
     <>
       <div id="content_nav" className={`jl_mobile_nav_wrapper ${open ? "jl_mobile_nav_open" : ""}`}>
@@ -15,29 +67,13 @@ export default function MobileMenu({ open, onClose }) {
 
           <ul id="mobile_menu_slide" className="menu_moble_slide">
             {mainMenu.map((item) => (
-              <li
+              <MobileMenuItem
                 key={item.label}
-                className={
-                  item.children
-                    ? "menu-item menu-item-has-children"
-                    : "menu-item current-menu-item current_page_item"
-                }
-              >
-                {item.to ? (
-                  <Link to={item.to} onClick={onClose}>{item.label}</Link>
-                ) : (
-                  <a href="#">{item.label}</a>
-                )}
-                {item.children && (
-                  <ul className="sub-menu">
-                    {item.children.map((child) => (
-                      <li key={child.label} className="menu-item current-menu-item current_page_item">
-                        <Link to={child.to} onClick={onClose}>{child.label}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
+                item={item}
+                onClose={onClose}
+                openKeys={openKeys}
+                toggleKey={toggleKey}
+              />
             ))}
           </ul>
 
