@@ -44,7 +44,7 @@ export default function SearchOverlay({ open, onClose }) {
         action="tanjakan-mekar.vercel.app/cari"
         onSubmit={handleSubmit}
       >
-        <input type="hidden" name="csrf_tokencmsdatagoe" value="" />
+        <input type="hidden" name="csrf_tokentanjakanmekar" value="" />
         <input type="hidden" name="jenis" value="berita" />
         <input type="hidden" name="kategori" id="kategori" value="" />
         <input
