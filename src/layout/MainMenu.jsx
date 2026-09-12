@@ -2,6 +2,20 @@ import { Link } from "react-router-dom";
 import { mainMenu } from "../data/menuData.js";
 import ThemeToggle from "../components/common/ThemeToggle.jsx";
 
+function handleMouseEnter(e) {
+  const li = e.currentTarget;
+  const submenu = li.querySelector(":scope > ul.sub-menu");
+  if (!submenu) return;
+
+  const marginAdjust = 100;
+  const navWidth = li.parentElement.offsetWidth;
+  const thisRight = li.offsetLeft + submenu.offsetWidth - marginAdjust;
+
+  if (thisRight > navWidth) {
+    submenu.classList.add("jl_menu_tls");
+  }
+}
+
 export default function MainMenu({ onSearchClick }) {
   return (
     <div id="menu_wrapper" className="menu_wrapper jl_menu_sticky jl_stick d-none d-md-block">
@@ -13,6 +27,7 @@ export default function MainMenu({ onSearchClick }) {
                 {mainMenu.map((item) => (
                   <li
                     key={item.label}
+                    onMouseEnter={item.children ? handleMouseEnter : undefined}
                     className={
                       item.children
                         ? "menu-item menu-item-has-children"
