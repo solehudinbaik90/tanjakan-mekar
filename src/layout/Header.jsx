@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SliderWrapper from "../components/common/SliderWrapper.jsx";
 import MainMenu from "./MainMenu.jsx";
@@ -7,10 +7,18 @@ import SearchOverlay from "./SearchOverlay.jsx";
 import ThemeToggle from "../components/common/ThemeToggle.jsx";
 import { siteConfig } from "../data/siteConfig.js";
 import { topAdsBanner } from "../data/bannerData.js";
+import useStickyHeader from "../hooks/useStickyHeader.js";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+
+  useStickyHeader();
+
+  useEffect(() => {
+    document.body.classList.add("mobile_nav_class");
+    document.body.classList.toggle("active_mobile_nav_class", mobileOpen || searchOpen);
+  }, [mobileOpen, searchOpen]);
 
   return (
     <>
