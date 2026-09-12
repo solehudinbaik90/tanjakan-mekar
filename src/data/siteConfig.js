@@ -5,7 +5,7 @@ export const siteConfig = {
   favicon: "/img/konfigurasi/icon/tm2.png",
   address:
     "Kp.Jungkel, Ds.Tanjakan Mekar, Kec.Rajeg, Kab. Tangerang - Banten 15540",
-  phone: "+629690801524",
+  phone: "+62887433130861",
   email: "solehudinz3692@gmail.com",
   social: {
     facebook: "https://www.facebook.com/soleh.muhamad",
