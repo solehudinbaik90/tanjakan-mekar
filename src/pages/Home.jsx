@@ -203,11 +203,31 @@ export default function Home() {
 
           {/* Section INFORMASI INSTANSI */}
           <SectionTitle title="INFORMASI INSTANSI" to="/layanan" />
-          <SliderWrapper slidesToShow={3} className="jl-w-slider jl_full_feature_w">
-            {layananShortcut.map((item) => (
-              <div className="item-slide" key={item.label}><InfoServiceCard item={item} /></div>
-            ))}
-          </SliderWrapper>
+            <SliderWrapper slidesToShow={3} className="jl-w-slider jl_full_feature_w">
+                {layananShortcut.map((item) => (
+                    <div className="item-slide" style={ { marginTop: "60px" }} key={item.label}>
+                        <div className="container">
+                            <div className="card card-profile shadow-sm">
+                                <div className="card-body p-1">
+                                    <div className="profile-image-wrapper">
+                                        <div className="profile-image">
+                                            <div className="avatar">
+                                                <InfoServiceCard item={item} />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h3 className="title-card" style={ { paddingTop: "60px" }}>
+                                        <a href={item.url || "https://tanjakan-mekar.vercel.app"} tabIndex="-1">
+                                            {item.label || "LAYANAN"}
+                                        </a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </SliderWrapper>
 
           {/* Section EBOOK */}
           <SectionTitle title="EBOOK" to="/ebook" />
