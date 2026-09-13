@@ -47,6 +47,7 @@ export default function Header() {
               </div>
 
               <div className="col-md-8 col-sm-12 col-xs-12 mt-3 mb-3 text-center">
+               <div class="jl-w-slider jl_full_feature_w">
                 <SliderWrapper autoplaySpeed={7000}>
                   {topAdsBanner.map((b, i) => (
                     <div className="item-slide jl_radus_e" key={i}>
@@ -64,7 +65,8 @@ export default function Header() {
                     </div>
                   ))}
                 </SliderWrapper>
-              </div>
+                  </div>
+               </div>
             </div>
           </div>
         </div>
