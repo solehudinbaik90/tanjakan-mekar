@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function InfoServiceCard({ item }) {
   return (
-    <div className="container" style={{ marginTop: 60 }}>
+    <div className="container">
       <div className="card card-profile shadow-sm text-center">
         <div className="card-body p-1">
           <div className="profile-image-wrapper">
