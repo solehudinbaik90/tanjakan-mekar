@@ -124,7 +124,7 @@ export default function Home() {
             {statistikList.map((s, i) => (
               <div className="item-slide" style={{ marginTop: 60 }} key={i}>
                 <div className="container">
-                  <div className="card card-profile" style={{ borderColor: s.color }}>
+                  <div className="card card-profile text-center" style={{ borderColor: s.color }}>
                     <div className="card-body p-1">
                       <div className="d-flex justify-content-center">
                         <div className="profile-image-wrapper">
