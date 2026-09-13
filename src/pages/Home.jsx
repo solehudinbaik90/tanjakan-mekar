@@ -216,12 +216,6 @@ export default function Home() {
                                             </div>
                                         </div>
                                     </div>
-
-                                    <h3 className="title-card" style={ { paddingTop: "60px" }}>
-                                        <a href={item.url || "https://tanjakan-mekar.vercel.app"} tabIndex="-1">
-                                            {item.label || "LAYANAN"}
-                                        </a>
-                                    </h3>
                                 </div>
                             </div>
                         </div>
