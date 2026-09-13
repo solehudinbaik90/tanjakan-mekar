@@ -126,13 +126,15 @@ export default function Home() {
                 <div className="container">
                   <div className="card card-profile" style={{ borderColor: s.color }}>
                     <div className="card-body p-1">
-                      <div className="profile-image-wrapper">
-                        <div className="profile-image no-border shadow-none">
-                          <div className="avatars" style={{ color: s.color }}>
-                            <i className={`${s.icon} fa-4x`} />
+                      <div className="d-flex justify-content-center">
+                        <div className="profile-image-wrapper">
+                          <div className="profile-image no-border shadow-none">
+                            <div className="avatars" style={{ color: s.color }}>
+                              <i className={`${s.icon} fa-4x`} />
                           </div>
                         </div>
                       </div>
+                     </div>
                       <h3 className="title-cardx" style={{ paddingTop: 20 }}>{s.jumlah}</h3>
                       <div className="font-small"><span className="text-muted">{s.label}</span></div>
                       <a href={s.link || "#"} target="_blank" rel="noreferrer">
