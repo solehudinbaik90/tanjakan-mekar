@@ -203,25 +203,11 @@ export default function Home() {
 
           {/* Section INFORMASI INSTANSI */}
           <SectionTitle title="INFORMASI INSTANSI" to="/layanan" />
-            <SliderWrapper slidesToShow={3} className="jl-w-slider jl_full_feature_w">
-                {layananShortcut.map((item) => (
-                    <div className="item-slide" style={ { marginTop: "60px" }} key={item.label}>
-                        <div className="container">
-                            <div className="card card-profile shadow-sm">
-                                <div className="card-body p-1">
-                                    <div className="profile-image-wrapper">
-                                        <div className="profile-image">
-                                            <div className="avatar">
-                                                <InfoServiceCard item={item} />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </SliderWrapper>
+          <SliderWrapper slidesToShow={3} className="jl-w-slider jl_full_feature_w">
+            {layananShortcut.map((item) => (
+              <div className="item-slide" style={{ marginTop: "60px" }} key={item.label}><InfoServiceCard item={item} /></div>
+            ))}
+          </SliderWrapper>
 
           {/* Section EBOOK */}
           <SectionTitle title="EBOOK" to="/ebook" />
