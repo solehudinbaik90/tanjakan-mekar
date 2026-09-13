@@ -31,7 +31,8 @@ export default function Home() {
       {/* Slider banner utama */}
       <div className="row">
         <div className="col-md-12 col-sm-12">
-          <SliderWrapper className="mb-0">
+          <SliderWrapper className="jl-w-slider jl_full_feature_w mb-0">
+           <div class="jl-eb-slider jelly_loading_pro">
             {homeSliderBanner.map((b, i) => (
               <div className="item-slide jl_radus_e" key={i}>
                 <div className="slide-inner">
@@ -46,6 +47,7 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
+            </div>
             ))}
           </SliderWrapper>
         </div>
@@ -120,7 +122,8 @@ export default function Home() {
       <div className="row">
         <div className="col-md-8 col-sm-12">
           {/* Section Counter / Statistik */}
-          <SliderWrapper slidesToShow={4} className="mb-1">
+          <SliderWrapper slidesToShow={4} className="jl-w-slider jl_full_feature_w mb-1">
+           <div class="jl-eb-slider jelly_loading_pro">
             {statistikList.map((s, i) => (
               <div className="item-slide" style={{ marginTop: 60 }} key={i}>
                 <div className="container">
@@ -144,6 +147,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+            </div>
             ))}
           </SliderWrapper>
 
@@ -158,7 +162,8 @@ export default function Home() {
           </div>
 
           {/* Iklan tengah */}
-          <SliderWrapper className="mb-4">
+          <SliderWrapper className="jl-w-slider jl_full_feature_w mb-4">
+           <div class="jl-eb-slider jelly_loading_pro">
             {midAdsBanner.map((b, i) => (
               <div className="item-slide jl_radus_e" key={i}>
                 <div className="slide-inner">
@@ -172,6 +177,7 @@ export default function Home() {
                   </a>
                 </div>
               </div>
+            </div>
             ))}
           </SliderWrapper>
 
@@ -179,11 +185,13 @@ export default function Home() {
           <div className="box mt-2">
             <div className="container my-5">
               <SectionTitle title="PEGAWAI" to="/pegawai" />
-              <SliderWrapper slidesToShow={4} className="mb-4">
+              <SliderWrapper slidesToShow={4} className="jl-w-slider jl_full_feature_w mb-4">
+               <div class="jl-eb-slider jelly_loading_pro">
                 {pegawaiList.map((p) => (
                   <div className="item-slide" key={p.id}>
                     <PegawaiCard pegawai={p} onView={setPegawaiModal} />
                   </div>
+                </div>
                 ))}
               </SliderWrapper>
             </div>
@@ -201,9 +209,11 @@ export default function Home() {
 
           {/* Section INFORMASI INSTANSI */}
           <SectionTitle title="INFORMASI INSTANSI" to="/layanan" />
-          <SliderWrapper slidesToShow={3} className="mb-4">
+          <SliderWrapper slidesToShow={3} className="jl-w-slider jl_full_feature_w">
+           <div class="jl-eb-slider jelly_loading_pro">
             {layananShortcut.map((item) => (
               <div className="item-slide" key={item.label}><InfoServiceCard item={item} /></div>
+          </div>
             ))}
           </SliderWrapper>
 
@@ -232,7 +242,8 @@ export default function Home() {
 
           {/* Section GALERI FOTO */}
           <SectionTitle title="GALERI FOTO" to="/foto" />
-          <SliderWrapper slidesToShow={2} className="mb-4">
+          <SliderWrapper slidesToShow={2} className="jl-w-slider jl_full_feature_w">
+           <div class="jl-eb-slider jelly_loading_pro">
             {fotoList.map((f) => (
               <div className="item-slide jl_m_center_w jl_radus_e" key={f.id}>
                 <div className="slide-inner m-1">
@@ -259,6 +270,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+            </div>
             ))}
           </SliderWrapper>
 
@@ -333,12 +345,14 @@ export default function Home() {
       </div>
 
       {/* Link terkait */}
-      <div className="row mb-3 mt-4">
-        <SliderWrapper slidesToShow={4} className="mb-3">
+      <div className="row mb-3">
+        <SliderWrapper slidesToShow={4} className="jl-w-slider jl_full_feature_w mb-3">
+        <div class="jl-eb-slider jelly_loading_pro">
           {linkTerkaitList.map((l) => (
             <div className="item-slide jl_radus_e" key={l.nama}>
               <div className="card p-0 m-2 shadow-sm">
-                <div className="card-body p-2 text-center">
+                <div className="card-body p-2">
+                  <div className="d-flex justify-content-center">
                   <a href={l.url} target="_blank" rel="noreferrer">
                     <img src={l.logo} alt={l.nama} style={{ maxHeight: 47 }} />
                     <div>{l.nama}</div>
@@ -346,6 +360,8 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
           ))}
         </SliderWrapper>
       </div>
