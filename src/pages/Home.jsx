@@ -47,8 +47,8 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-            </div>
             ))}
+         </div>
           </SliderWrapper>
         </div>
 
@@ -147,8 +147,8 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
             ))}
+         </div>
           </SliderWrapper>
 
           {/* Section TERKINI */}
@@ -177,8 +177,8 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-            </div>
             ))}
+         </div>
           </SliderWrapper>
 
           {/* Section PEGAWAI */}
@@ -191,8 +191,8 @@ export default function Home() {
                   <div className="item-slide" key={p.id}>
                     <PegawaiCard pegawai={p} onView={setPegawaiModal} />
                   </div>
-                </div>
                 ))}
+             </div>
               </SliderWrapper>
             </div>
           </div>
@@ -213,8 +213,8 @@ export default function Home() {
            <div class="jl-eb-slider jelly_loading_pro">
             {layananShortcut.map((item) => (
               <div className="item-slide" key={item.label}><InfoServiceCard item={item} /></div>
-          </div>
             ))}
+        </div>
           </SliderWrapper>
 
           {/* Section EBOOK */}
@@ -270,8 +270,8 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
             ))}
+        </div>
           </SliderWrapper>
 
           <Modal open={!!fotoModal} onClose={() => setFotoModal(null)} title={fotoModal?.judul}>
@@ -361,8 +361,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
           ))}
+       </div>
         </SliderWrapper>
       </div>
 
