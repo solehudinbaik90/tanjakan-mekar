@@ -3,9 +3,13 @@ import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import BackToTop from "../components/common/BackToTop.jsx";
 import { useTheme } from "../context/ThemeContext.jsx";
+import useStickyHeader from "../hooks/useStickyHeader.js";
+import useHeaderScrollEffects from "../hooks/useHeaderScrollEffects.js";
 
 export default function MainLayout() {
   const { isDark } = useTheme();
+  useStickyHeader();
+  useHeaderScrollEffects();
 
   return (
     <div
