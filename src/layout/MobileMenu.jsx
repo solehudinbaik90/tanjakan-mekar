@@ -1,25 +1,55 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { mainMenu } from "../data/menuData.js";
 import { siteConfig } from "../data/siteConfig.js";
 
-function MobileMenuItem({ item, onClose, openKeys, toggleKey, parentKey }) {
+function MobileMenuItem({ item, onClose, openKeys, toggleKey, parentKey, depth = 0 }) {
   const itemKey = parentKey ? `${parentKey}>${item.label}` : item.label;
   const hasChildren = Boolean(item.children?.length);
   const isOpen = openKeys.has(itemKey);
+  const isRealLink = Boolean(item.to);
 
-  return (
-    <li className={hasChildren ? "menu-item menu-item-has-children" : "menu-item current-menu-item current_page_item"}>
-      {item.to ? (
-        <Link to={item.to} onClick={onClose}>{item.label}</Link>
-      ) : (
-        <a href="#">{item.label}</a>
-      )}
+  const icon =
+    depth === 0
+      ? item.icon !== undefined && <i className={item.icon} />
+      : item.icon && <i className={item.icon} style={{ fontSize: "small" }} />;
 
+  const showTarget = isRealLink || depth > 0;
+
+  const handleArrowClick = (e) => {
+    e.preventDefault();
+    toggleKey(itemKey);
+  };
+
+  const content = (
+    <>
+      {icon}
+      {item.label}
+      {depth === 0 && <span className="border-menu" />}
       {hasChildren && (
-        <span className="arrow_down" onClick={() => toggleKey(itemKey)}>
+        <span className="arrow_down" onClick={handleArrowClick}>
           <i className={isOpen ? "jli-up-chevron" : "jli-down-chevron"} aria-hidden="true" />
         </span>
+      )}
+    </>
+  );
+
+  return (
+    <li
+      className={
+        hasChildren
+          ? "menu-item menu-item-has-children"
+          : "menu-item current-menu-item current_page_item"
+      }
+    >
+      {isRealLink ? (
+        <Link to={item.to} target={showTarget ? "_parent" : undefined} onClick={onClose}>
+          {content}
+        </Link>
+      ) : (
+        <a href="#" target={showTarget ? "_parent" : undefined}>
+          {content}
+        </a>
       )}
 
       {hasChildren && (
@@ -32,6 +62,7 @@ function MobileMenuItem({ item, onClose, openKeys, toggleKey, parentKey }) {
               openKeys={openKeys}
               toggleKey={toggleKey}
               parentKey={itemKey}
+              depth={depth + 1}
             />
           ))}
         </ul>
@@ -55,13 +86,18 @@ export default function MobileMenu({ open, onClose }) {
     });
   };
 
+  useEffect(() => {
+    document.body.classList.toggle("active_mobile_nav_class", open);
+  }, [open]);
+
   return (
     <>
       <div id="content_nav" className={`jl_mobile_nav_wrapper ${open ? "jl_mobile_nav_open" : ""}`}>
         <div id="nav" className="jl_mobile_nav_inner">
           <div className="menu_mobile_icons mobile_close_icons closed_menu" onClick={onClose}>
             <span className="jl_close_wapper">
-              <span className="jl_close_1" /><span className="jl_close_2" />
+              <span className="jl_close_1" />
+              <span className="jl_close_2" />
             </span>
           </div>
 
@@ -73,6 +109,7 @@ export default function MobileMenu({ open, onClose }) {
                 onClose={onClose}
                 openKeys={openKeys}
                 toggleKey={toggleKey}
+                depth={0}
               />
             ))}
           </ul>
@@ -109,7 +146,11 @@ export default function MobileMenu({ open, onClose }) {
           </div>
         </div>
       </div>
-      {open && <div className="mobile_menu_overlay" onClick={onClose} />}
+
+      <div
+        className={`mobile_menu_overlay ${open ? "mobile_menu_active" : ""}`}
+        onClick={onClose}
+      />
     </>
   );
 }
