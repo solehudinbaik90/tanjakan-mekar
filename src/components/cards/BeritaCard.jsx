@@ -1,18 +1,28 @@
 import { Link } from "react-router-dom";
 
-export default function BeritaCard({ item }) {
+export default function BeritaCard({ item, variant = "grid" }) {
+  const isCompact = variant === "compact";
+
+  const rowClass = isCompact
+    ? "row align-items-center justify-content-center"
+    : "row align-items-center";
+  const imageColClass = isCompact ? "col-4 pr-2" : "col-3 p-0 pl-3";
+  const textColClass = isCompact ? "col-8 pl-0" : "col-9";
+
   return (
-    <div className="card p-0 shadow-sm mb-2">
+    <div className="card p-0 shadow-sm" style={{ marginBottom: 10 }}>
       <div className="card-body p-1">
-        <div className="row align-items-center">
-          <div className="col-3 pl-3">
+        <div className={rowClass}>
+          <div className={imageColClass}>
             <Link to={`/${item.slug}`}>
-              <img src={item.image} alt={item.judul} className="rounded img-fluid" />
+              <img src={item.image} alt={item.judul} className="rounded" />
             </Link>
           </div>
-          <div className="col-9">
+          <div className={textColClass}>
             <h3 className="title-card">
-              <Link to={`/${item.slug}`}>{item.judul}</Link>
+              <Link to={`/${item.slug}`} tabIndex="-1">
+                {item.judul}
+              </Link>
             </h3>
             <span className="jl_post_meta">
               <span className="text-primary">
