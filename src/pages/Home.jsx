@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SliderWrapper from "../components/common/SliderWrapper.jsx";
 import SectionTitle from "../components/common/SectionTitle.jsx";
@@ -6,7 +7,7 @@ import PegawaiCard from "../components/cards/PegawaiCard.jsx";
 import InfoServiceCard from "../components/cards/InfoServiceCard.jsx";
 import Modal from "../components/common/Modal.jsx";
 import Sidebar from "../layout/Sidebar.jsx";
-import { useState } from "react";
+import { fetchPenawaran } from "../services/penawaranService.js";
 
 import { homeSliderBanner, midAdsBanner } from "../data/bannerData.js";
 import { beritaUtama, beritaSamping, beritaList, artikelList } from "../data/beritaData.js";
@@ -25,6 +26,18 @@ export default function Home() {
   const [sambutanOpen, setSambutanOpen] = useState(false);
   const [pengumumanModal, setPengumumanModal] = useState(null);
   const [fotoModal, setFotoModal] = useState(null);
+  const [infografisModal, setInfografisModal] = useState(null);
+  const [penawaranModal, setPenawaranModal] = useState(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    fetchPenawaran().then((data) => {
+      if (isMounted && data) setPenawaranModal(data);
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <div className="container">
@@ -35,15 +48,9 @@ export default function Home() {
             {homeSliderBanner.map((b, i) => (
               <div className="item-slide jl_radus_e" key={i}>
                 <div className="slide-inner">
-                  <Link to={b.to}>
-                    <img
-                      src={b.image}
-                      title={b.title}
-                      alt={b.title}
-                      className="img-fluid"
-                      style={{ width: "100%", height: "auto" }}
-                    />
-                  </Link>
+                  <a href={b.to} target="_blank" rel="noreferrer">
+                    <img src={b.image} title={b.title} alt={b.title} />
+                  </a>
                 </div>
               </div>
             ))}
@@ -57,7 +64,7 @@ export default function Home() {
               <span className="re-info">Pengumuman <i className="fas fa-bullhorn text-light" /></span>
             </div>
             <div className="dinas-info col-md-12">
-              <marquee className="item" onMouseOver={(e) => e.target.stop()} onMouseOut={(e) => e.target.start()}>
+              <marquee className="item" onMouseOver={(e) => e.currentTarget.stop()} onMouseOut={(e) => e.currentTarget.start()}>
                 {pengumumanList.map((p) => (
                   <span key={p.id} style={{ marginRight: 40 }}>
                     <span style={{ color: "#f5f5f5", background: "orange", padding: "3px 5px" }}>
@@ -81,7 +88,7 @@ export default function Home() {
         )}
       </Modal>
 
-      {/* Berita utama + 4 berita samping */}
+      {/* Berita utama + berita samping (BeritaCard variant="compact") */}
       <div className="row">
         <div className="col-md-8 col-sm-12">
           <div className="jl_m_center blog-style-one blog-small-grid">
@@ -112,7 +119,9 @@ export default function Home() {
           </div>
         </div>
         <div className="col-md-4 col-sm-12">
-          {beritaSamping.map((b) => <BeritaCard item={b} key={b.slug} />)}
+          {beritaSamping.map((b) => (
+            <BeritaCard item={b} variant="compact" key={b.slug} />
+          ))}
         </div>
       </div>
 
@@ -131,12 +140,16 @@ export default function Home() {
                           <div className="profile-image no-border shadow-none">
                             <div className="avatars" style={{ color: s.color }}>
                               <i className={`${s.icon} fa-4x`} />
+                            </div>
                           </div>
                         </div>
                       </div>
-                     </div>
-                      <h3 className="title-cardx" style={{ paddingTop: 20 }}>{s.jumlah}</h3>
-                      <div className="font-small"><span className="text-muted">{s.label}</span></div>
+                      <h3 className="title-cardx" style={{ paddingTop: 20 }}>
+                        <a href="#" tabIndex="-1">{s.jumlah}</a>
+                      </h3>
+                      <div className="font-small">
+                        <span className="text-muted">{s.label}</span>
+                      </div>
                       <a href={s.link || "#"} target="_blank" rel="noreferrer">
                         <span className="badge badge-light-primary profile-badge">
                           {s.sumber || "Sekretariat"} <i className="fas fa-arrow-right" />
@@ -149,12 +162,12 @@ export default function Home() {
             ))}
           </SliderWrapper>
 
-          {/* Section TERKINI */}
+          {/* Section TERKINI (BeritaCard variant="grid") */}
           <SectionTitle title="TERKINI" to="/berita" />
           <div className="row mb-4">
             {beritaList.map((b) => (
               <div className="col-md-6 col-12" key={b.slug}>
-                <BeritaCard item={b} />
+                <BeritaCard item={b} variant="grid" />
               </div>
             ))}
           </div>
@@ -191,21 +204,23 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Section ARTIKEL */}
+          {/* Section ARTIKEL (BeritaCard variant="grid") */}
           <SectionTitle title="ARTIKEL" to="/category/artikel" />
           <div className="row mb-4">
             {artikelList.map((a) => (
               <div className="col-md-6 col-12" key={a.slug}>
-                <BeritaCard item={a} />
+                <BeritaCard item={a} variant="grid" />
               </div>
             ))}
           </div>
 
           {/* Section INFORMASI INSTANSI */}
-          <SectionTitle title="INFORMASI INSTANSI" to="/layanan" />
+          <SectionTitle title="INFORMASI INSTANSI" to="/layanan" showMore={false} />
           <SliderWrapper slidesToShow={3} className="jl-w-slider jl_full_feature_w">
             {layananShortcut.map((item) => (
-              <div className="item-slide" style={{ marginTop: "60px" }} key={item.label}><InfoServiceCard item={item} /></div>
+              <div className="item-slide" style={{ marginTop: "60px" }} key={item.label}>
+                <InfoServiceCard item={item} />
+              </div>
             ))}
           </SliderWrapper>
 
@@ -233,7 +248,7 @@ export default function Home() {
           </div>
 
           {/* Section GALERI FOTO */}
-          <SectionTitle title="GALERI FOTO" to="/foto" />
+          <SectionTitle title="GALERI FOTO" to="/foto" showMore={false} />
           <SliderWrapper slidesToShow={2} className="jl-w-slider jl_full_feature_w">
             {fotoList.map((f) => (
               <div className="item-slide jl_m_center_w jl_radus_e" key={f.id}>
@@ -269,68 +284,76 @@ export default function Home() {
           </Modal>
         </div>
 
-        {/* ================= SIDEBAR (col-md-4) ================= */}
+        {/* ================= SIDEBAR + theiaStickySidebar ================= */}
         <div className="col-md-4 col-sm-12">
-          <div className="section-title">
-            <h1 className="text-uppercase"><Link to="/opini">Kepala Dinas</Link></h1>
-          </div>
-          <div className="card p-0 shadow-sm">
-            <div className="card-body p-1">
-              <div className="justify-content-between align-items-center text-center">
-                <img
-                  src={kepalaDinas.foto}
-                  alt={kepalaDinas.nama}
-                  className="pointer"
-                  onClick={() => setSambutanOpen(true)}
-                />
-                <br />
-                <span className="badge badge-light-primary profile-badge text-center">
-                  {kepalaDinas.nama} <i className="fas fa-arrow-right" />
-                </span>
-              </div>
+          <div className="theiaStickySidebar">
+            <div className="section-title">
+              <h1 className="text-uppercase"><Link to="/opini">Kepala Dinas</Link></h1>
             </div>
-          </div>
-
-          <Modal open={sambutanOpen} onClose={() => setSambutanOpen(false)} title={`Sambutan ${kepalaDinas.nama}`}>
-            <p style={{ textAlign: "justify", whiteSpace: "pre-line" }}>{kepalaDinas.sambutan}</p>
-          </Modal>
-
-          {/* showTerpopuler, showInfografis, showJajakPendapat */}
-          <Sidebar showTerpopuler showInfografis showJajakPendapat />
-
-          <div className="section-title mt-3">
-            <h1 className="text-uppercase"><Link to="/agenda">Agenda</Link></h1>
-          </div>
-          {agendaList.slice(0, 5).map((a) => (
-            <div className="card p-0 shadow-sm mb-2" key={a.id}>
+            <div className="card p-0 shadow-sm">
               <div className="card-body p-1">
-                <h3 className="title-card">{a.judul}</h3>
-                <span className="jl_post_meta">{a.lokasi} | {a.tanggalMulai} - {a.tanggalSelesai}</span>
+                <div className="justify-content-between align-items-center text-center">
+                  <img
+                    src={kepalaDinas.foto}
+                    alt={kepalaDinas.nama}
+                    className="pointer"
+                    onClick={() => setSambutanOpen(true)}
+                  />
+                  <br />
+                  <span className="badge badge-light-primary profile-badge text-center">
+                    {kepalaDinas.nama} <i className="fas fa-arrow-right" />
+                  </span>
+                </div>
               </div>
             </div>
-          ))}
 
-          <div className="card p-2 mt-3">
-            <div className="card-body p-1">
-              <h3 className="title-card">{siteConfig.visiMisiQuote}</h3>
+            <Modal open={sambutanOpen} onClose={() => setSambutanOpen(false)} title={`Sambutan ${kepalaDinas.nama}`}>
+              <p style={{ textAlign: "justify", whiteSpace: "pre-line" }}>{kepalaDinas.sambutan}</p>
+            </Modal>
+
+            {/* showKategori dimatikan karena homepage tidak punya widget "Kategori Berita" di sidebar */}
+            <Sidebar
+              showKategori={false}
+              showTerpopuler
+              showInfografis
+              showJajakPendapat
+              onInfografisPreview={setInfografisModal}
+            />
+
+            <div className="section-title mt-3">
+              <h1 className="text-uppercase"><Link to="/agenda">Agenda</Link></h1>
             </div>
-          </div>
+            {agendaList.slice(0, 5).map((a) => (
+              <div className="card p-0 shadow-sm mb-2" key={a.id}>
+                <div className="card-body p-1">
+                  <h3 className="title-card">{a.judul}</h3>
+                  <span className="jl_post_meta">{a.lokasi} | {a.tanggalMulai} - {a.tanggalSelesai}</span>
+                </div>
+              </div>
+            ))}
 
-          <div className="section-title mt-3">
-            <h1 className="text-uppercase">
-              <a href={siteConfig.mapUrl} target="_blank" rel="noreferrer">KANTOR KAMI</a>
-            </h1>
+            <div className="card p-2 mt-3">
+              <div className="card-body p-1">
+                <h3 className="title-card">{siteConfig.visiMisiQuote}</h3>
+              </div>
+            </div>
+
+            <div className="section-title mt-3">
+              <h1 className="text-uppercase">
+                <a href={siteConfig.mapUrl} target="_blank" rel="noreferrer">KANTOR KAMI</a>
+              </h1>
+            </div>
+            <iframe
+              src={siteConfig.mapEmbedUrl}
+              width="100%"
+              height="250"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Peta Kantor"
+            />
           </div>
-          <iframe
-            src={siteConfig.mapEmbedUrl}
-            width="100%"
-            height="250"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Peta Kantor"
-          />
         </div>
       </div>
 
@@ -339,20 +362,32 @@ export default function Home() {
         <SliderWrapper slidesToShow={4} className="jl-w-slider jl_full_feature_w mb-3">
           {linkTerkaitList.map((l) => (
             <div className="item-slide jl_radus_e" key={l.nama}>
-              <div className="card p-0 m-2 shadow-sm">
-                <div className="card-body p-2">
-                  <div className="d-flex justify-content-center">
-                  <a href={l.url} target="_blank" rel="noreferrer">
-                    <img src={l.logo} alt={l.nama} style={{ maxHeight: 47 }} />
-                    <div>{l.nama}</div>
-                  </a>
+              <div className="slide-inner">
+                <div className="card p-0 m-2 shadow-sm">
+                  <div className="card-body p-2">
+                    <div className="d-flex justify-content-center">
+                      <center>
+                        <a href={l.url} target="_blank" rel="noreferrer">
+                          <img src={l.logo} alt={l.nama} style={{ maxHeight: 47 }} />
+                          {l.nama}
+                        </a>
+                      </center>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           ))}
         </SliderWrapper>
       </div>
+
+      <Modal open={!!infografisModal} onClose={() => setInfografisModal(null)} title="Infografis">
+        {infografisModal && <img src={infografisModal.image} alt="Infografis" className="img-fluid rounded" />}
+      </Modal>
+
+      <Modal open={!!penawaranModal} onClose={() => setPenawaranModal(null)} title={penawaranModal?.judul}>
+        {penawaranModal && <div dangerouslySetInnerHTML={{ __html: penawaranModal.konten }} />}
+      </Modal>
 
       <Modal open={!!pegawaiModal} onClose={() => setPegawaiModal(null)} title={pegawaiModal?.nama}>
         {pegawaiModal && (
