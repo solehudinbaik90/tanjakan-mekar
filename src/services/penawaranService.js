@@ -1,5 +1,5 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://plus3.datagoe.com";
-const CSRF_INPUT_SELECTOR = 'input[name="csrf_tokencmsdatagoe"]';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://tanjakan-mekar.vercel.app";
+const CSRF_INPUT_SELECTOR = 'input[name="csrf_tokentanjakanmekar"]';
 
 function getCsrfToken() {
   return document.querySelector(CSRF_INPUT_SELECTOR)?.value ?? "";
@@ -15,13 +15,13 @@ export async function fetchPenawaran() {
     const res = await fetch(`${API_BASE_URL}/home/penawaran22`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({ csrf_tokencmsdatagoe: getCsrfToken() }),
+      body: new URLSearchParams({ csrf_tokentanjakanmekar: getCsrfToken() }),
     });
 
     if (!res.ok) return null;
 
     const json = await res.json();
-    setCsrfToken(json.csrf_tokencmsdatagoe);
+    setCsrfToken(json.csrf_tokentanjakanmekar);
 
     if (!json.data) return null;
 
