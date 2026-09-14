@@ -7,13 +7,10 @@ import SearchOverlay from "./SearchOverlay.jsx";
 import ThemeToggle from "../components/common/ThemeToggle.jsx";
 import { siteConfig } from "../data/siteConfig.js";
 import { topAdsBanner } from "../data/bannerData.js";
-import useStickyHeader from "../hooks/useStickyHeader.js";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-
-  useStickyHeader();
 
   useEffect(() => {
     document.body.classList.add("mobile_nav_class");
@@ -47,26 +44,26 @@ export default function Header() {
               </div>
 
               <div className="col-md-8 col-sm-12 col-xs-12 mt-3 mb-3 text-center">
-               <div class="jl-w-slider jl_full_feature_w">
-                <SliderWrapper autoplaySpeed={7000}>
-                  {topAdsBanner.map((b, i) => (
-                    <div className="item-slide jl_radus_e" key={i}>
-                      <div className="slide-inner">
-                        <a href={b.href} target="_blank" rel="noreferrer" title={b.title}>
-                          <img
-                            src={b.image}
-                            alt={b.title}
-                            title={b.title}
-                            className="img-fluid position-relative rounded"
-                            style={{ width: "100%", height: "auto" }}
-                          />
-                        </a>
+                <div className="jl-w-slider jl_full_feature_w">
+                  <SliderWrapper autoplaySpeed={7000}>
+                    {topAdsBanner.map((b, i) => (
+                      <div className="item-slide jl_radus_e" key={i}>
+                        <div className="slide-inner">
+                          <a href={b.href} target="_blank" rel="noreferrer" title={b.title}>
+                            <img
+                              src={b.image}
+                              alt={b.title}
+                              title={b.title}
+                              className="img-fluid position-relative rounded"
+                              style={{ width: "100%", height: "auto" }}
+                            />
+                          </a>
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </SliderWrapper>
-                  </div>
-               </div>
+                    ))}
+                  </SliderWrapper>
+                </div>
+              </div>
             </div>
           </div>
         </div>
