@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import Sidebar from "../layout/Sidebar.jsx";
 import {
   transparansiTahunList,
@@ -123,7 +124,7 @@ export default function Transparansi() {
             style={{ background: "#AFEEEE", borderColor: "#e3e3e3" }}
           >
             Anda punya pertanyaan, keluhan, masukan atau saran seputar pelayanan kami?{" "}
-            <Link to="/masukansaran"><b>Klik disini</b></Link>, untuk sampaikan.
+            <a href="/masukansaran"><b>Klik disini</b></a>
           </div>
         </div>
 
